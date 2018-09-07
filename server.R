@@ -3,6 +3,7 @@ library(DBI)
 library(RMySQL)
 library(xlsx)
 library(caret)
+setwd('~/shinybot')
 
 shinyServer(function(input, output, session) {
   source("crcoan.R")
