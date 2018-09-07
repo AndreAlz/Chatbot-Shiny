@@ -3,8 +3,8 @@ library(shiny)
 # library(RMySQL)
 # library(xlsx)
 # library(caret)
-source("crcoan.R")
-mknn=creaModelknn()
+# source("crcoan.R")
+# mknn=creaModelknn()
 
 shinyServer(function(input, output, session) {
   output$resp=renderText({
