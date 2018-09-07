@@ -3,7 +3,7 @@ library(DBI)
 library(RMySQL)
 library(xlsx)
 library(caret)
-source("crcoan.R")
+# source("crcoan.R")
 # mknn=creaModelknn()
 
 shinyServer(function(input, output, session) {
