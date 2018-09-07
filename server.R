@@ -1,8 +1,8 @@
 library(shiny)
-# library(DBI)
-# library(RMySQL)
-# library(xlsx)
-# library(caret)
+library(DBI)
+library(RMySQL)
+library(xlsx)
+library(caret)
 # source("crcoan.R")
 # mknn=creaModelknn()
 
