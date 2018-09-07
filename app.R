@@ -51,4 +51,4 @@ ui <- fluidPage(
 #     }
 #   })
 }
-shinyApp(ui = ui, server = server)
+# shinyApp(ui = ui, server = server)
