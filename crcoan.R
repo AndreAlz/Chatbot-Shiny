@@ -1,10 +1,9 @@
-
 processingData <- function(){
   getwd()
-  setwd("C:/Users/practicante/Documents/shinybot")
+  setwd('~/shinybot')
   library(xlsx)
-  batch1=read.xlsx("C:/Users/practicante/Documents/shinybot/batch.xlsx" , sheetIndex =1)
-  batch2=read.xlsx("C:/Users/practicante/Documents/shinybot/batch.xlsx" , sheetIndex =2)
+  batch1=read.xlsx('~/shinybot/batch.xlsx' , sheetIndex =1)
+  batch2=read.xlsx('~/shinybot/batch.xlsx' , sheetIndex =2)
   trend1=trend2=GE=GC=matrix(NA,nrow = nrow(batch1),ncol = 1)
   for (i in 1:nrow(batch1)) {
     data =data.frame(Word=character(), stringsAsFactors = FALSE)
@@ -52,10 +51,8 @@ creaModelknn <- function(){
 
 partirmensaje<-function(a){
   getwd()
-  setwd("C:/Users/practicante/Documents/shinybot")
-  batch2=read.xlsx("C:/Users/practicante/Documents/shinybot/batch.xlsx" , sheetIndex =2)
-  # b=read.xlsx("C:/Users/practicante/Documents/Chat-botv2/batch.xlsx" , sheetIndex =3)
-  # # mensaje=toString(b[1,1])
+  setwd('~/shinybot')
+  batch2=read.xlsx('~/shinybot/batch.xlsx' , sheetIndex =2)
   mensaje=toString(a)
   trend1=trend2=GE=GC=matrix(NA,nrow = 1,ncol = 1)
   temp=strsplit(mensaje, split = " ")
