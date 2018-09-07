@@ -1,4 +1,8 @@
-library(shiny)
+library(shiny)library(DBI)
+library(RMySQL)
+library(xlsx)
+library(caret)
+
 shinyUI(fluidPage(
   titlePanel("Shiny Bot"),
   textInput("texto",label = "ingrese mensaje"),
