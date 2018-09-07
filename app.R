@@ -7,8 +7,8 @@ library(shiny)
 ui <- fluidPage(
   titlePanel("Shiny Bot"),
   textInput("texto",label = "ingrese mensaje"),
-  actionButton("enviar", label = "enviar"),
-  textOutput("resp")
+  actionButton("enviar", label = "enviar")
+  # textOutput("resp")
 )
 # server <- function(input, output,session) {
 #   source("crcoan.R")
