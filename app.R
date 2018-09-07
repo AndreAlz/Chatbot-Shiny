@@ -10,7 +10,7 @@ ui <- fluidPage(
   actionButton("enviar", label = "enviar")
   # textOutput("resp")
 )
-# server <- function(input, output,session) {
+server <- function(input, output,session) {
 #   source("crcoan.R")
 #   mknn=creaModelknn()
 #   mensaje=eventReactive(input$enviar,input$texto)
