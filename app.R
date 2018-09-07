@@ -3,8 +3,6 @@ library(DBI)
 library(RMySQL)
 library(xlsx)
 library(caret)
-source("crcoan.R")
-mknn=creaModelknn()
 
 ui <- fluidPage(
   titlePanel("Shiny Bot"),
@@ -13,6 +11,8 @@ ui <- fluidPage(
   textOutput("resp")
 )
 server <- function(input, output,session) {
+  source("crcoan.R")
+  mknn=creaModelknn()
   mensaje=eventReactive(input$enviar,input$texto)
   pre=reactiveVal(0)
   interact=0
