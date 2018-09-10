@@ -1,7 +1,4 @@
-library(shiny)library(DBI)
-library(RMySQL)
-library(xlsx)
-library(caret)
+library(shiny)
 
 shinyUI(fluidPage(
   titlePanel("Shiny Bot"),
