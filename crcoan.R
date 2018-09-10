@@ -1,7 +1,6 @@
 processingData <- function(){
   getwd()
   setwd('~/shinybot')
-  library(xlsx)
   batch1=read.xlsx('~/shinybot/batch.xlsx' , sheetIndex =1)
   batch2=read.xlsx('~/shinybot/batch.xlsx' , sheetIndex =2)
   trend1=trend2=GE=GC=matrix(NA,nrow = nrow(batch1),ncol = 1)
