@@ -4,10 +4,11 @@ library(shiny)
 # library(xlsx)
 # library(caret)
 source("crcoan.R")
-F=processingData() 
+
 # mknn=creaModelknn()
 
 shinyServer(function(input, output, session) {
+  F=processingData() 
   output$resp=renderText({
     "prueba de servidor"
   })
