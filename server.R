@@ -4,7 +4,7 @@ library(shiny)
 # library(xlsx)
 # library(caret)
 source("crcoan.R")
-# mknn=creaModelknn()
+mknn=creaModelknn()
 
 shinyServer(function(input, output, session) {
   output$resp=renderText({
