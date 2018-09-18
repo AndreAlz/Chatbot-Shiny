@@ -1,6 +1,4 @@
 processingData <- function(){
-  getwd()
-  setwd('~/shinybot')
   batch1=read.xlsx('~/shinybot/batch.xlsx' , sheetIndex =1)
   batch2=read.xlsx('~/shinybot/batch.xlsx' , sheetIndex =2)
   trend1=trend2=GE=GC=matrix(NA,nrow = nrow(batch1),ncol = 1)
@@ -41,7 +39,7 @@ processingData <- function(){
 }
 
 creaModelknn <- function(){
-  data=processingData()
+  data=readRDS(file = "data_training.RDS")
   data$Resultado=as.factor(data$Resultado)
   set.seed(6666)
   modelo_knn = train(data[,3:6],data[,2], method = 'knn')
@@ -49,9 +47,7 @@ creaModelknn <- function(){
 }
 
 partirmensaje<-function(a){
-  getwd()
-  setwd('~/shinybot')
-  batch2=read.xlsx('~/shinybot/batch.xlsx' , sheetIndex =2)
+  batch2=readRDS("diccionary.RDS")
   mensaje=toString(a)
   trend1=trend2=GE=GC=matrix(NA,nrow = 1,ncol = 1)
   temp=strsplit(mensaje, split = " ")
@@ -87,3 +83,16 @@ partirmensaje<-function(a){
   finalbatch=cbind(text,trend1,trend2,GE,GC)
   return(finalbatch)
 }
+
+connectMySQL<-function(){
+  # Seleccionar driver de trabajo
+  m = dbDriver("MySQL")
+  # Informacion de la DB
+  myHost <- "IP"
+  myUsername = "USER"
+  myDbname = "DBNAME"
+  myPort = "PORT"
+  myPassword = "PASSWORD"
+  #Creacion del obj. de conexion
+  con = dbConnect(m, user= myUsername, host= myHost, password= myPassword, dbname= myDbname, port= myPort)
+  return(con)}
