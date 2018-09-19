@@ -2,8 +2,9 @@ library(shiny)
 
 shinyUI(fluidPage(
   titlePanel("Shiny Bot"),
-  textInput("texto",label = "ingrese mensaje"),
-  actionButton("enviar", label = "enviar"),
-  textOutput("resp"),
-  dataTableOutput("resp2")
+  textInput("texto",label = "Ingrese texto"),
+  actionButton("enviar", label = "Enviar"),
+  textOutput("respuesta"),
+  dataTableOutput("data")
+  
 ))
