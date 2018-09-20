@@ -129,11 +129,6 @@ partirmensaje<-function(a){
   return(finalbatch)
 }
 
-isDate <- function(fecha) {
-  tryCatch(!is.na(as.Date(fecha, tryFormats = c("%Y-%m-%d", "%Y/%m/%d","%d-%m-%Y","%m-%d-%Y"))),  
-           error = function(err) {FALSE})
-}
-
 connectMySQL<-function(){
   # Seleccionar driver de trabajo
   m = dbDriver("MySQL")
@@ -147,3 +142,7 @@ connectMySQL<-function(){
   con = dbConnect(m, user= myUsername, host= myHost, password= myPassword, dbname= myDbname, port= myPort)
   return(con)}
 
+isDate <- function(fecha) {
+  tryCatch(!is.na(as.Date(fecha, tryFormats = c("%Y-%m-%d", "%Y/%m/%d","%d-%m-%Y","%m-%d-%Y"))),  
+           error = function(err) {FALSE})
+}

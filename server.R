@@ -9,15 +9,17 @@ shinyServer(function(input, output, session) {
   model_knn1=creaModelknn(1)
   model_knn2=creaModelknn(2)
   data=0
+  interact=0
   observeEvent(input$enviar,{
+    updateTextInput(session,inputId = "texto", value = "")
     eval=partirmensaje(tolower(toString(input$texto)))
     resultado=predict(model_knn1, eval[,6:7])
     if(resultado==1){
       resul=predict(model_knn2, eval[,2:5])
       if(resul==1){
-        output$respuesta=renderText("Prodias indicarme el numero de ticket ?")
+        output$respuesta=renderText("Podrias indicarme el numero de ticket ?")
       }else{
-        output$respuesta=renderText("Prodias indicarme la fecha ?")
+        output$respuesta=renderText("Podrias indicarme desde que fecha te mostrare los tickets ?")
       }
     }
     if (resultado==2) {
@@ -45,12 +47,12 @@ shinyServer(function(input, output, session) {
         sqlquery=paste(consulta,input$texto,sep = " ")
         conn=connectMySQL()
         res = dbSendQuery(conn, sqlquery)
-        result = dbFetch(res, 10)
+        result = dbFetch(res, -1)
         data<<-result
         dbClearResult(res)
         output$data=renderDataTable(data)
       } else if(isDate(input$texto)==TRUE){
-        output$respuesta=renderText("Encontre esta informacion desde su fecha.")
+        output$respuesta=renderText("Encontre estos tickets desde la fecha indicada:")
         consulta="select wo.WORKORDERID AS 'TICKET ID',
                    wo.TITLE AS 'ASUNTO',
                    aau.FIRST_NAME AS 'USUARIO',
@@ -72,12 +74,17 @@ shinyServer(function(input, output, session) {
         conn=connectMySQL()
         sqlquery=paste(consulta,input$texto,consultap2,sep = " ")
         res = dbSendQuery(conn, sqlquery)
-        result = dbFetch(res, 10)
+        result = dbFetch(res, -1)
         data<<-result
         dbClearResult(res)
         output$data=renderDataTable(data)
       } else{
-        output$respuesta=renderText('Hola soy "Shiny bot", yo te voy a ayudar con muchas cosas :V')
+        if(interact==0){
+          output$respuesta=renderText('Hola soy "Shiny bot", yo te voy a ayudar con muchas cosas :V')
+        }else{
+          output$respuesta=renderText('Creo que podrias decirme algo relacionado a mi trabajo :V')
+        }
+        interact<<-1
       }
     }
   })
