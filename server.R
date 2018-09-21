@@ -50,6 +50,7 @@ shinyServer(function(input, output, session) {
         result = dbFetch(res, -1)
         data<<-result
         dbClearResult(res)
+        dbDisconnect(conn)
         output$data=renderDataTable(data)
       } else if(isDate(input$texto)==TRUE){
         output$respuesta=renderText("Encontre estos tickets desde la fecha indicada:")
@@ -77,6 +78,7 @@ shinyServer(function(input, output, session) {
         result = dbFetch(res, -1)
         data<<-result
         dbClearResult(res)
+        dbDisconnect(conn)
         output$data=renderDataTable(data)
       } else{
         if(interact==0){
